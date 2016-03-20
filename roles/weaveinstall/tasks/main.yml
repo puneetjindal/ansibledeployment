@@ -7,7 +7,7 @@
   file: path={{ weave_bin }} mode="u+rx,g+rx,o+rwx"
 
 - name: Download Weave Containers
-  command: sudo weave setup
+  command: weave setup
 
 - name: Launch Weave 
-  command: sudo weave launch
+  command: weave launch

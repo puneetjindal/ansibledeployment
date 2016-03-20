@@ -1,0 +1,45 @@
+#- name: install commonly used packages via yum
+#  yum: name={{ item }} state=installed
+#  with_items:
+#    - curl
+#    - wget
+#    - lzo-devel
+#    - ntp
+#    - rsyslog
+#    - libselinux-python
+#  tags:
+#    - ntp
+#    - slaves
+#    - monitor
+#    - ganglia
+
+#- name: remove OpenJDK
+#  yum: name={{ item }} state=removed
+#  with_items: 
+#   - java
+#   - jdk
+#  when: install_oracle_jdk
+#  tags:
+#    - slaves
+#    - monitor
+
+#- name: install Oracle JDK 7.67
+#  shell: chdir=/tmp wget --no-check-certificate --no-cookies --header 'Cookie:oraclelicense=accept-securebackup-cookie' http://download.oracle.com/otn-pub/java/jdk/7u67-b01/jdk-7u67-linux-x64.rpm && rpm -Uvh /tmp/jdk-7u67-linux-x64.rpm
+#  tags:
+#    - slaves
+#    - monitor
+#  when: install_oracle_jdk
+
+#- name: disable SELinux in conf file
+#  lineinfile: dest=/etc/sysconfig/selinux regexp='^SELINUX=' line='SELINUX=disabled' state=present
+#  tags:
+#    - slaves
+#    - monitor
+#    - ganglia
+
+#- name: disable SELinux dynamically
+#  shell: creates=/etc/sysconfig/selinux.disabled setenforce 0 ; touch /etc/sysconfig/selinux.disabled
+#  tags:
+#    - slaves
+#    - monitor
+#    - ganglia
